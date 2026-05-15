@@ -10,6 +10,8 @@ const invoiceItemSchema = z.object({
 
 export const createInvoiceSchema = z.object({
   customerId: z.string().optional(),
+  customerName: z.string().trim().optional(),
+  customerPhone: z.string().trim().optional(),
   items: z
     .array(invoiceItemSchema, { required_error: 'Items are required' })
     .min(1, 'At least one item is required'),

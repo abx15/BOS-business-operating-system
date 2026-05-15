@@ -54,17 +54,54 @@ export const invoicesService = {
     const taxAmount = (subtotal * input.tax) / 100;
     const total = subtotal + taxAmount - input.discount;
 
-    // 5. Generate invoice number
+    // 5. Handle Customer (Auto-create or Link)
+    let finalCustomerId = input.customerId;
+
+    if (!finalCustomerId && (input.customerName || input.customerPhone)) {
+      // Find existing customer by phone or name
+      const existingCustomer = await prisma.customer.findFirst({
+        where: {
+          companyId,
+          OR: [
+            ...(input.customerPhone ? [{ phone: input.customerPhone }] : []),
+            ...(input.customerName ? [{ name: input.customerName }] : []),
+          ],
+        },
+      });
+
+      if (existingCustomer) {
+        finalCustomerId = existingCustomer.id;
+        // Optionally update their name if it was missing
+        if (!existingCustomer.name && input.customerName) {
+          await prisma.customer.update({
+            where: { id: existingCustomer.id },
+            data: { name: input.customerName },
+          });
+        }
+      } else if (input.customerName) {
+        // Create new customer
+        const newCustomer = await prisma.customer.create({
+          data: {
+            companyId,
+            name: input.customerName,
+            phone: input.customerPhone,
+          },
+        });
+        finalCustomerId = newCustomer.id;
+      }
+    }
+
+    // 6. Generate invoice number
     const invoiceNumber = await generateInvoiceNumber(companyId);
 
-    // 6. TRANSACTION — create invoice + items + deduct stock + notifications
+    // 7. TRANSACTION — create invoice + items + deduct stock + notifications
     const invoice = await prisma.$transaction(async (tx) => {
       // Create invoice
       const newInvoice = await tx.invoice.create({
         data: {
           companyId,
           invoiceNumber,
-          customerId: input.customerId ?? null,
+          customerId: finalCustomerId ?? null,
           createdById,
           subtotal,
           tax: taxAmount,

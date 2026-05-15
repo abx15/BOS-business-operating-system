@@ -30,6 +30,13 @@ import {
   CheckCircle2,
   X,
 } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Product {
   id: string;
@@ -59,6 +66,10 @@ export default function BillingPage() {
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [successInvoice, setSuccessInvoice] = useState<{ id: string; invoiceNumber: string } | null>(null);
+  const [customerName, setCustomerName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [customerId, setCustomerId] = useState<string | undefined>(undefined);
+  const [customers, setCustomers] = useState<{id:string, name:string, phone:string|null}[]>([]);
 
   const {
     items, paymentMethod, tax, discount,
@@ -86,6 +97,10 @@ export default function BillingPage() {
     api.get("/products/categories").then((res) => {
       setCategories(res.data.data ?? []);
     }).catch(() => {});
+
+    api.get("/customers?limit=100").then((res) => {
+      setCustomers(res.data.data ?? []);
+    }).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -105,11 +120,17 @@ export default function BillingPage() {
         paymentMethod,
         tax,
         discount,
+        customerId,
+        customerName: customerName || undefined,
+        customerPhone: customerPhone || undefined,
       };
       const res = await api.post("/invoices", payload);
       const inv = res.data.data;
       setSuccessInvoice({ id: inv.id, invoiceNumber: inv.invoiceNumber });
       clearCart();
+      setCustomerName("");
+      setCustomerPhone("");
+      setCustomerId(undefined);
       fetchProducts();
       toast.success(`Invoice ${inv.invoiceNumber} created!`);
     } catch (err: any) {
@@ -373,6 +394,63 @@ export default function BillingPage() {
             </ScrollArea>
 
             <div className="p-4 border-t space-y-4 bg-muted/5 flex-shrink-0">
+              {/* Customer Selection */}
+              <div className="space-y-3">
+                <Label className="text-[10px] uppercase tracking-wider text-muted-foreground">Customer Selection</Label>
+                <div className="space-y-2">
+                  <Select 
+                    value={customerId || "new"} 
+                    onValueChange={(v) => {
+                      if (v === "new") {
+                        setCustomerId(undefined);
+                        setCustomerName("");
+                        setCustomerPhone("");
+                      } else {
+                        const c = customers.find(x => x.id === v);
+                        if (c) {
+                          setCustomerId(c.id);
+                          setCustomerName(c.name);
+                          setCustomerPhone(c.phone || "");
+                        }
+                      }
+                    }}
+                  >
+                    <SelectTrigger className="h-8 text-xs">
+                      <SelectValue placeholder="Select existing or new" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="new">+ New Customer</SelectItem>
+                      {customers.map(c => (
+                        <SelectItem key={c.id} value={c.id}>{c.name} ({c.phone || "No phone"})</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+
+                  {!customerId && (
+                    <div className="grid grid-cols-2 gap-2 animate-in fade-in slide-in-from-top-1">
+                      <Input
+                        placeholder="New Name"
+                        value={customerName}
+                        onChange={(e) => setCustomerName(e.target.value)}
+                        className="h-8 text-xs"
+                      />
+                      <Input
+                        placeholder="New Phone"
+                        value={customerPhone}
+                        onChange={(e) => setCustomerPhone(e.target.value)}
+                        className="h-8 text-xs"
+                      />
+                    </div>
+                  )}
+                  {customerId && (
+                    <div className="p-2 rounded bg-muted/50 border border-dashed text-[11px] flex justify-between items-center">
+                      <span className="font-medium">{customerName}</span>
+                      <span className="text-muted-foreground">{customerPhone}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
               {/* Tax + Discount */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1.5">

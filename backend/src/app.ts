@@ -8,7 +8,7 @@ import { prisma } from './config/db';
 import { env } from './config/env';
 import { sendSuccess } from './utils/response';
 import authRoutes from './modules/auth/auth.routes';
-import superAdminCompanyRoutes from './modules/super-admin/company/company.routes';
+import superAdminRoutes from './modules/super-admin/super-admin.routes';
 import productRoutes from './modules/products/products.routes';
 import invoiceRoutes from './modules/invoices/invoices.routes';
 import customerRoutes from './modules/customers/customers.routes';
@@ -60,7 +60,7 @@ app.get('/health', async (_req, res) => {
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/super/companies', superAdminCompanyRoutes);
+app.use('/api/super', superAdminRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/invoices', invoiceRoutes);
 app.use('/api/customers', customerRoutes);

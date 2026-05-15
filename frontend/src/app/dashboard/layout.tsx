@@ -232,9 +232,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </Sheet>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0 min-h-0 overflow-hidden">
         {/* Mobile topbar */}
-        <header className="lg:hidden flex items-center gap-3 px-4 py-3 border-b bg-card">
+        <header className="lg:hidden flex items-center gap-3 px-4 py-3 border-b bg-card flex-shrink-0">
           <Button variant="ghost" size="icon" className="w-9 h-9" onClick={() => setMobileOpen(true)}>
             <Menu className="w-5 h-5" />
           </Button>
@@ -253,7 +253,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </header>
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto p-4 lg:p-6">
+        <main className="flex-1 overflow-y-auto p-4 lg:p-6 scroll-smooth">
           {children}
         </main>
       </div>
