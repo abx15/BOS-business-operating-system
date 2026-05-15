@@ -4,45 +4,56 @@ import bcrypt from 'bcryptjs';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Seeding database...');
+  console.log('🌱 Seeding BOS database with core demo data...\n');
 
-  // Check if super admin already exists
-  const existingAdmin = await prisma.user.findFirst({
-    where: { role: 'SUPER_ADMIN' },
-  });
+  // Cleanup
+  console.log('Cleaning up...');
+  await prisma.notification.deleteMany();
+  await prisma.salary.deleteMany();
+  await prisma.attendance.deleteMany();
+  await prisma.invoiceItem.deleteMany();
+  await prisma.invoice.deleteMany();
+  await prisma.customer.deleteMany();
+  await prisma.product.deleteMany();
+  await prisma.staffMember.deleteMany();
+  await prisma.user.deleteMany();
+  await prisma.company.deleteMany();
 
-  if (existingAdmin) {
-    console.log('✅ Super Admin already exists:', existingAdmin.email);
-    return;
-  }
-
-  // Create Super Admin
-  const hashedPassword = await bcrypt.hash('SuperAdmin@123', 12);
-
+  const superAdminPassword = await bcrypt.hash('SuperAdmin@123', 12);
   const superAdmin = await prisma.user.create({
     data: {
       name: 'Super Admin',
       email: 'admin@bos.com',
-      password: hashedPassword,
+      password: superAdminPassword,
       role: 'SUPER_ADMIN',
-      companyId: null,
-      isActive: true,
     },
   });
 
-  console.log('✅ Super Admin created:');
-  console.log('   Email:', superAdmin.email);
-  console.log('   Password: SuperAdmin@123');
-  console.log('   Role:', superAdmin.role);
-  console.log('');
-  console.log('⚠️  IMPORTANT: Change password after first login!');
+  const company1 = await prisma.company.create({
+    data: {
+      name: 'Sharma General Store',
+      slug: 'sharma-general-store',
+      ownerName: 'Ramesh Sharma',
+      ownerPhone: '9876543210',
+      ownerEmail: 'ramesh@sharma.com',
+      plan: 'PRO',
+      planExpiresAt: new Date('2027-12-31'),
+      isActive: true,
+      isVerified: true,
+    },
+  });
+
+  await prisma.user.create({
+    data: {
+      name: 'Ramesh Sharma',
+      email: 'ramesh.admin@sharma.com',
+      password: await bcrypt.hash('Admin@12345', 12),
+      role: 'COMPANY_ADMIN',
+      companyId: company1.id,
+    },
+  });
+
+  console.log('✅ Core data created!');
 }
 
-main()
-  .catch((err) => {
-    console.error('❌ Seed failed:', err);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+main().catch(console.error).finally(() => prisma.$disconnect());
