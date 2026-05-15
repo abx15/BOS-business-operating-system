@@ -1,0 +1,305 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum Role {
+  SUPER_ADMIN
+  COMPANY_ADMIN
+}
+
+enum PlanType {
+  BASIC
+  PRO
+  ENTERPRISE
+}
+
+enum PaymentMethod {
+  CASH
+  UPI
+  CARD
+}
+
+enum InvoiceStatus {
+  PAID
+  PENDING
+  CANCELLED
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  HALF_DAY
+}
+
+enum SalaryStatus {
+  PAID
+  PENDING
+}
+
+enum NotificationType {
+  LOW_STOCK
+  SALARY_PENDING
+  PLAN_EXPIRY
+  GENERAL
+}
+
+// ============================================
+// COMPANY (Top-level tenant)
+// ============================================
+
+model Company {
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique
+  logo          String?
+  ownerName     String
+  ownerPhone    String
+  ownerEmail    String
+  plan          PlanType  @default(BASIC)
+  planExpiresAt DateTime
+  isActive      Boolean   @default(true)
+  isVerified    Boolean   @default(false)
+  isSuspended   Boolean   @default(false)
+  deletedAt     DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  users         User[]
+  staff         StaffMember[]
+  products      Product[]
+  invoices      Invoice[]
+  customers     Customer[]
+  attendances   Attendance[]
+  salaries      Salary[]
+  notifications Notification[]
+
+  @@index([isActive])
+  @@index([plan])
+  @@index([createdAt])
+}
+
+// ============================================
+// USERS (Login access — SUPER_ADMIN or COMPANY_ADMIN only)
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  password      String
+  role          Role      @default(COMPANY_ADMIN)
+  companyId     String?
+  refreshToken  String?
+  isActive      Boolean   @default(true)
+  deletedAt     DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  company       Company?  @relation(fields: [companyId], references: [id])
+  invoices      Invoice[]
+
+  @@index([companyId])
+  @@index([email])
+  @@index([role])
+}
+
+// ============================================
+// STAFF (No login — record only)
+// ============================================
+
+model StaffMember {
+  id              String      @id @default(cuid())
+  companyId       String
+  name            String
+  phone           String?
+  email           String?
+  designation     String
+  joinDate        DateTime
+  photoUrl        String?
+  monthlySalary   Float
+  isVerified      Boolean     @default(false)
+  isActive        Boolean     @default(true)
+  deletedAt       DateTime?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  company         Company     @relation(fields: [companyId], references: [id])
+  attendances     Attendance[]
+  salaries        Salary[]
+
+  @@index([companyId])
+  @@index([isVerified])
+}
+
+// ============================================
+// PRODUCTS + INVENTORY
+// ============================================
+
+model Product {
+  id                String        @id @default(cuid())
+  companyId         String
+  name              String
+  price             Float
+  stockQty          Int           @default(0)
+  lowStockThreshold Int           @default(10)
+  category          String?
+  description       String?
+  isActive          Boolean       @default(true)
+  deletedAt         DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  company           Company       @relation(fields: [companyId], references: [id])
+  invoiceItems      InvoiceItem[]
+
+  @@index([companyId])
+  @@index([category])
+  @@index([stockQty])
+  @@index([createdAt])
+}
+
+// ============================================
+// CUSTOMERS
+// ============================================
+
+model Customer {
+  id          String    @id @default(cuid())
+  companyId   String
+  name        String
+  email       String?
+  phone       String?
+  deletedAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  company     Company   @relation(fields: [companyId], references: [id])
+  invoices    Invoice[]
+
+  @@index([companyId])
+  @@index([phone])
+}
+
+// ============================================
+// INVOICES (Billing)
+// ============================================
+
+model Invoice {
+  id              String        @id @default(cuid())
+  companyId       String
+  invoiceNumber   String        @unique
+  customerId      String?
+  createdById     String
+  subtotal        Float
+  tax             Float         @default(0)
+  discount        Float         @default(0)
+  total           Float
+  paymentMethod   PaymentMethod
+  status          InvoiceStatus @default(PAID)
+  notes           String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  company         Company       @relation(fields: [companyId], references: [id])
+  customer        Customer?     @relation(fields: [customerId], references: [id])
+  createdBy       User          @relation(fields: [createdById], references: [id])
+  items           InvoiceItem[]
+
+  @@index([companyId])
+  @@index([invoiceNumber])
+  @@index([createdAt])
+  @@index([status])
+  @@index([paymentMethod])
+}
+
+model InvoiceItem {
+  id          String   @id @default(cuid())
+  invoiceId   String
+  productId   String
+  productName String
+  quantity    Int
+  unitPrice   Float
+  subtotal    Float
+
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  product     Product  @relation(fields: [productId], references: [id])
+
+  @@index([invoiceId])
+  @@index([productId])
+}
+
+// ============================================
+// ATTENDANCE
+// ============================================
+
+model Attendance {
+  id          String           @id @default(cuid())
+  companyId   String
+  staffId     String
+  date        DateTime         @db.Date
+  status      AttendanceStatus
+  note        String?
+  createdAt   DateTime         @default(now())
+
+  company     Company          @relation(fields: [companyId], references: [id])
+  staff       StaffMember      @relation(fields: [staffId], references: [id])
+
+  @@unique([staffId, date])
+  @@index([companyId])
+  @@index([staffId])
+  @@index([date])
+}
+
+// ============================================
+// SALARY
+// ============================================
+
+model Salary {
+  id          String       @id @default(cuid())
+  companyId   String
+  staffId     String
+  month       String
+  amount      Float
+  status      SalaryStatus @default(PENDING)
+  paidAt      DateTime?
+  notes       String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  company     Company      @relation(fields: [companyId], references: [id])
+  staff       StaffMember  @relation(fields: [staffId], references: [id])
+
+  @@unique([staffId, month])
+  @@index([companyId])
+  @@index([status])
+  @@index([month])
+}
+
+// ============================================
+// NOTIFICATIONS
+// ============================================
+
+model Notification {
+  id          String           @id @default(cuid())
+  companyId   String
+  type        NotificationType
+  title       String
+  message     String
+  isRead      Boolean          @default(false)
+  metadata    Json?
+  createdAt   DateTime         @default(now())
+
+  company     Company          @relation(fields: [companyId], references: [id])
+
+  @@index([companyId])
+  @@index([isRead])
+  @@index([createdAt])
+}

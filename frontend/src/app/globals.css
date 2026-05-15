@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   PASTEL RAINBOW — BOS Design System
+   Palette: #ffadad #ffd6a5 #fdffb6 #caffbf 
+            #9bf6ff #a0c4ff #bdb2ff #ffc6ff
+   ============================================ */
+
+:root {
+  /* Pastel Rainbow Colors */
+  --pastel-red:    #ffadad;
+  --pastel-orange: #ffd6a5;
+  --pastel-yellow: #fdffb6;
+  --pastel-green:  #caffbf;
+  --pastel-cyan:   #9bf6ff;
+  --pastel-blue:   #a0c4ff;
+  --pastel-purple: #bdb2ff;
+  --pastel-pink:   #ffc6ff;
+
+  /* Semantic mappings — Light Mode */
+  --background:           0 0% 98%;
+  --foreground:           240 10% 10%;
+  --card:                 0 0% 100%;
+  --card-foreground:      240 10% 10%;
+  --popover:              0 0% 100%;
+  --popover-foreground:   240 10% 10%;
+
+  /* Primary = Pastel Blue */
+  --primary:              220 100% 80%;
+  --primary-foreground:   220 50% 20%;
+
+  /* Secondary = Pastel Purple */
+  --secondary:            252 100% 85%;
+  --secondary-foreground: 252 40% 20%;
+
+  /* Muted */
+  --muted:                220 15% 95%;
+  --muted-foreground:     220 10% 45%;
+
+  /* Accent = Pastel Green */
+  --accent:               135 100% 87%;
+  --accent-foreground:    135 50% 20%;
+
+  /* Destructive = Pastel Red */
+  --destructive:          0 100% 83%;
+  --destructive-foreground: 0 60% 20%;
+
+  --border:               220 15% 88%;
+  --input:                220 15% 92%;
+  --ring:                 220 100% 80%;
+
+  /* Chart colors — pastel rainbow */
+  --chart-1: 220 100% 80%;
+  --chart-2: 135 100% 87%;
+  --chart-3: 252 100% 85%;
+  --chart-4: 0 100% 83%;
+  --chart-5: 30 100% 82%;
+
+  --radius: 0.75rem;
+
+  /* Sidebar */
+  --sidebar:              240 10% 10%;
+  --sidebar-foreground:   0 0% 95%;
+  --sidebar-primary:      220 100% 80%;
+  --sidebar-primary-foreground: 220 50% 20%;
+  --sidebar-accent:       240 8% 18%;
+  --sidebar-accent-foreground: 0 0% 90%;
+  --sidebar-border:       240 8% 20%;
+  --sidebar-ring:         220 100% 80%;
+}
+
+.dark {
+  --background:           240 10% 6%;
+  --foreground:           0 0% 95%;
+  --card:                 240 10% 9%;
+  --card-foreground:      0 0% 95%;
+  --popover:              240 10% 9%;
+  --popover-foreground:   0 0% 95%;
+  --primary:              220 100% 75%;
+  --primary-foreground:   220 50% 15%;
+  --secondary:            252 60% 30%;
+  --secondary-foreground: 252 100% 90%;
+  --muted:                240 8% 15%;
+  --muted-foreground:     240 5% 55%;
+  --accent:               135 50% 25%;
+  --accent-foreground:    135 100% 88%;
+  --destructive:          0 70% 35%;
+  --destructive-foreground: 0 100% 90%;
+  --border:               240 8% 18%;
+  --input:                240 8% 18%;
+  --ring:                 220 100% 75%;
+  --chart-1: 220 100% 75%;
+  --chart-2: 135 70% 60%;
+  --chart-3: 252 100% 78%;
+  --chart-4: 0 80% 65%;
+  --chart-5: 30 90% 65%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  /* Pastel Rainbow direct utilities */
+  --color-pastel-red:    var(--pastel-red);
+  --color-pastel-orange: var(--pastel-orange);
+  --color-pastel-yellow: var(--pastel-yellow);
+  --color-pastel-green:  var(--pastel-green);
+  --color-pastel-cyan:   var(--pastel-cyan);
+  --color-pastel-blue:   var(--pastel-blue);
+  --color-pastel-purple: var(--pastel-purple);
+  --color-pastel-pink:   var(--pastel-pink);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Smooth scrollbar */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar — pastel style */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pastel-blue);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pastel-purple);
+}
