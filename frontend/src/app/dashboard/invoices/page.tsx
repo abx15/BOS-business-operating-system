@@ -124,7 +124,7 @@ export default function InvoicesPage() {
 
       {/* Filters */}
       <div className="flex gap-3 mb-5 flex-wrap">
-        <Select value={statusFilter} onValueChange={(v) => { setStatusFilter(v); setPage(1); }}>
+        <Select value={statusFilter} onValueChange={(v) => { setStatusFilter(v || "all"); setPage(1); }}>
           <SelectTrigger className="w-36">
             <SelectValue placeholder="All status" />
           </SelectTrigger>
@@ -135,7 +135,7 @@ export default function InvoicesPage() {
             <SelectItem value="CANCELLED">Cancelled</SelectItem>
           </SelectContent>
         </Select>
-        <Select value={paymentFilter} onValueChange={(v) => { setPaymentFilter(v); setPage(1); }}>
+        <Select value={paymentFilter} onValueChange={(v) => { setPaymentFilter(v || "all"); setPage(1); }}>
           <SelectTrigger className="w-36">
             <SelectValue placeholder="All payments" />
           </SelectTrigger>
