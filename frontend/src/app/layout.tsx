@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "BOS - Business Operating System",
   description: "Next-gen SaaS Dashboard",
+  icons: {
+    icon: "/assets/icons/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

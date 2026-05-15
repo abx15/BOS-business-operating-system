@@ -12,7 +12,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Eye, EyeOff, Loader2, Building2 } from "lucide-react";
+import Image from "next/image";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email"),
@@ -81,10 +82,15 @@ export default function LoginPage() {
         <CardHeader className="text-center pb-2">
           {/* Logo */}
           <div
-            className="mx-auto mb-4 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg"
-            style={{ background: "var(--pastel-blue)" }}
+            className="mx-auto mb-4 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white overflow-hidden"
           >
-            <Building2 className="w-8 h-8 text-primary-foreground" />
+            <Image 
+              src="/assets/icons/logo.png" 
+              alt="BOS Logo" 
+              width={64} 
+              height={64} 
+              className="object-contain p-2"
+            />
           </div>
           <CardTitle className="text-2xl font-bold">BOS</CardTitle>
           <CardDescription className="text-base">

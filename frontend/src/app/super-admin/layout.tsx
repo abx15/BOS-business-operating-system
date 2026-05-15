@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 import api from "@/lib/api";
+import Image from "next/image";
 import { LayoutDashboard, Building2, BarChart3, LogOut, Menu, ChevronRight } from "lucide-react";
 
 const NAV = [
@@ -38,8 +39,14 @@ function SidebarContent({ onClose }: { onClose?: () => void }) {
   return (
     <div className="flex flex-col h-full bg-sidebar text-sidebar-foreground">
       <div className="p-5 flex items-center gap-3">
-        <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: "#a0c4ff" }}>
-          <Building2 className="w-5 h-5 text-[hsl(220_50%_20%)]" />
+        <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-white overflow-hidden shadow-sm">
+          <Image 
+            src="/assets/icons/logo.png" 
+            alt="Logo" 
+            width={32} 
+            height={32} 
+            className="object-contain p-1"
+          />
         </div>
         <div>
           <p className="font-bold text-base leading-none">BOS Admin</p>
@@ -108,6 +115,15 @@ export default function SuperAdminLayout({ children }: { children: React.ReactNo
           <Button variant="ghost" size="icon" className="w-9 h-9" onClick={() => setMobileOpen(true)}>
             <Menu className="w-5 h-5" />
           </Button>
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-white overflow-hidden shadow-sm">
+            <Image 
+              src="/assets/icons/logo.png" 
+              alt="Logo" 
+              width={24} 
+              height={24} 
+              className="object-contain p-0.5"
+            />
+          </div>
           <p className="font-bold">BOS Admin</p>
         </header>
         <main className="flex-1 overflow-y-auto p-4 lg:p-6">{children}</main>

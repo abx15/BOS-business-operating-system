@@ -13,6 +13,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 import api from "@/lib/api";
+import Image from "next/image";
 import {
   LayoutDashboard,
   Package,
@@ -25,7 +26,6 @@ import {
   Bell,
   LogOut,
   Menu,
-  Building2,
   ChevronRight,
 } from "lucide-react";
 
@@ -68,10 +68,15 @@ function SidebarContent({
       {/* Logo */}
       <div className="p-5 flex items-center gap-3">
         <div
-          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-          style={{ background: "#a0c4ff" }}
+          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-white overflow-hidden shadow-sm"
         >
-          <Building2 className="w-5 h-5 text-[hsl(220_50%_20%)]" />
+          <Image 
+            src="/assets/icons/logo.png" 
+            alt="Logo" 
+            width={32} 
+            height={32} 
+            className="object-contain p-1"
+          />
         </div>
         <div>
           <p className="font-bold text-base leading-none">BOS</p>
@@ -234,10 +239,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Menu className="w-5 h-5" />
           </Button>
           <div
-            className="w-7 h-7 rounded-lg flex items-center justify-center"
-            style={{ background: "#a0c4ff" }}
+            className="w-7 h-7 rounded-lg flex items-center justify-center bg-white overflow-hidden shadow-sm"
           >
-            <Building2 className="w-4 h-4 text-[hsl(220_50%_20%)]" />
+            <Image 
+              src="/assets/icons/logo.png" 
+              alt="Logo" 
+              width={24} 
+              height={24} 
+              className="object-contain p-0.5"
+            />
           </div>
           <p className="font-bold">BOS</p>
         </header>
