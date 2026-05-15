@@ -431,7 +431,7 @@ export default function CompaniesPage() {
               <Select
                 value={companyForm.plan}
                 onValueChange={(v) =>
-                  setCompanyForm((p) => ({ ...p, plan: v }))
+                  setCompanyForm((p) => ({ ...p, plan: v || "BASIC" }))
                 }
               >
                 <SelectTrigger>
@@ -536,7 +536,7 @@ export default function CompaniesPage() {
               <Label className="text-xs">Plan</Label>
               <Select
                 value={planForm.plan}
-                onValueChange={(v) => setPlanForm((p) => ({ ...p, plan: v }))}
+                onValueChange={(v) => setPlanForm((p) => ({ ...p, plan: v || "BASIC" }))}
               >
                 <SelectTrigger>
                   <SelectValue />

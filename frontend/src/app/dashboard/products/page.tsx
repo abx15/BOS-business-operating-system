@@ -259,7 +259,7 @@ export default function ProductsPage() {
             className="pl-9"
           />
         </div>
-        <Select value={category} onValueChange={(v) => { setCategory(v); setPage(1); }}>
+        <Select value={category} onValueChange={(v) => { setCategory(v || "all"); setPage(1); }}>
           <SelectTrigger className="w-44">
             <SelectValue placeholder="All categories" />
           </SelectTrigger>
