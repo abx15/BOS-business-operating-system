@@ -31,8 +31,8 @@ export function sendSuccess<T>(
   const response: SuccessResponse<T> = {
     success: true,
     data,
-    ...(message && { message }),
-    ...(meta && { meta }),
+    ...(message ? { message } : {}),
+    ...(meta ? { meta } : {}),
   };
   res.status(statusCode).json(response);
 }
@@ -49,7 +49,7 @@ export function sendError(
   const response: ErrorResponse = {
     success: false,
     message,
-    ...(errors && { errors }),
+    ...(errors ? { errors } : {}),
   };
   res.status(statusCode).json(response);
 }
