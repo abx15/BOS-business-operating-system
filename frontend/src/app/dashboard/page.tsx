@@ -226,7 +226,7 @@ export default function DashboardPage() {
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                 <XAxis
                   dataKey="date"
-                  tickFormatter={formatGraphDate}
+                  tickFormatter={(v) => formatGraphDate(String(v))}
                   tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
                   tickLine={false}
                   axisLine={false}
@@ -235,7 +235,7 @@ export default function DashboardPage() {
                   tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
                   tickLine={false}
                   axisLine={false}
-                  tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`}
+                  tickFormatter={(v: any) => `₹${(Number(v) / 1000).toFixed(0)}k`}
                 />
                 <Tooltip
                   formatter={(value: any) => [formatCurrency(value), "Sales"]}
