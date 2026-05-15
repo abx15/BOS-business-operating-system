@@ -90,8 +90,8 @@ export default function ProductsPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const productForm = useForm<ProductForm>({ resolver: zodResolver(productSchema) });
-  const stockForm = useForm<StockForm>({
+  const productForm = useForm({ resolver: zodResolver(productSchema) });
+  const stockForm = useForm({
     resolver: zodResolver(stockSchema),
     defaultValues: { type: "ADD" },
   });
