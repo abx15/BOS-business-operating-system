@@ -60,7 +60,7 @@ export default function StaffPage() {
   const [selected, setSelected] = useState<StaffMember | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const form = useForm<StaffForm>({ resolver: zodResolver(staffSchema) });
+  const form = useForm({ resolver: zodResolver(staffSchema) });
 
   const fetchStaff = useCallback(async () => {
     setLoading(true);
