@@ -230,13 +230,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Mobile topbar */}
         <header className="lg:hidden flex items-center gap-3 px-4 py-3 border-b bg-card">
-          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="w-9 h-9">
-                <Menu className="w-5 h-5" />
-              </Button>
-            </SheetTrigger>
-          </Sheet>
+          <Button variant="ghost" size="icon" className="w-9 h-9" onClick={() => setMobileOpen(true)}>
+            <Menu className="w-5 h-5" />
+          </Button>
           <div
             className="w-7 h-7 rounded-lg flex items-center justify-center"
             style={{ background: "#a0c4ff" }}
