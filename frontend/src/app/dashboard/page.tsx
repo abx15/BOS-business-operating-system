@@ -239,7 +239,7 @@ export default function DashboardPage() {
                 />
                 <Tooltip
                   formatter={(value: any) => [formatCurrency(value), "Sales"]}
-                  labelFormatter={formatGraphDate}
+                  labelFormatter={(label: any) => formatGraphDate(String(label))}
                   contentStyle={{
                     background: "hsl(var(--card))",
                     border: "1px solid hsl(var(--border))",
