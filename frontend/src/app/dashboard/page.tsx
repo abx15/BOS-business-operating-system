@@ -238,7 +238,7 @@ export default function DashboardPage() {
                   tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`}
                 />
                 <Tooltip
-                  formatter={(value: number) => [formatCurrency(value), "Sales"]}
+                  formatter={(value: any) => [formatCurrency(value), "Sales"]}
                   labelFormatter={formatGraphDate}
                   contentStyle={{
                     background: "hsl(var(--card))",
