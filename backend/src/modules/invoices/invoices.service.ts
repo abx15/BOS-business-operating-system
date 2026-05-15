@@ -173,7 +173,8 @@ export const invoicesService = {
     status?: string,
     paymentMethod?: string,
     startDate?: string,
-    endDate?: string
+    endDate?: string,
+    customerId?: string
   ) {
     const skip = (page - 1) * limit;
 
@@ -190,6 +191,7 @@ export const invoicesService = {
             lte: new Date(endDate),
           },
         }),
+      ...(customerId && { customerId }),
     };
 
     const [invoices, total] = await Promise.all([

@@ -37,6 +37,7 @@ export const invoicesController = {
       const paymentMethod = req.query.paymentMethod as string | undefined;
       const startDate = req.query.startDate as string | undefined;
       const endDate = req.query.endDate as string | undefined;
+      const customerId = req.query.customerId as string | undefined;
 
       const result = await invoicesService.getAll(
         req.companyId!,
@@ -45,7 +46,8 @@ export const invoicesController = {
         status,
         paymentMethod,
         startDate,
-        endDate
+        endDate,
+        customerId
       );
       sendSuccess(res, result.invoices, { meta: result.meta });
     } catch {
