@@ -105,11 +105,9 @@ export default function SuperAdminLayout({ children }: { children: React.ReactNo
       </Sheet>
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <header className="lg:hidden flex items-center gap-3 px-4 py-3 border-b bg-card">
-          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="w-9 h-9"><Menu className="w-5 h-5" /></Button>
-            </SheetTrigger>
-          </Sheet>
+          <Button variant="ghost" size="icon" className="w-9 h-9" onClick={() => setMobileOpen(true)}>
+            <Menu className="w-5 h-5" />
+          </Button>
           <p className="font-bold">BOS Admin</p>
         </header>
         <main className="flex-1 overflow-y-auto p-4 lg:p-6">{children}</main>
