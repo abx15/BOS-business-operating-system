@@ -6,8 +6,8 @@ import { ArrowRight, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Hero() {
-  const containerRef = useRef(null);
-  const textRef = useRef(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

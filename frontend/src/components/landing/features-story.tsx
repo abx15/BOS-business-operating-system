@@ -38,8 +38,8 @@ const CARDS = [
 ];
 
 export function FeaturesStory() {
-  const sectionRef = useRef(null);
-  const horizontalRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const horizontalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

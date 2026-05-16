@@ -28,7 +28,7 @@ const STEPS = [
 ];
 
 export function Workflow() {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
