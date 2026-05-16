@@ -215,7 +215,7 @@ export default function LoginPage() {
 
       {/* Footer Branding */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-zinc-500 text-xs font-medium tracking-widest uppercase opacity-50">
-        Powered by Antigravity AI
+        Developed: by Arun Kumar Bind
       </div>
     </div>
   );
