@@ -59,42 +59,42 @@ const STAT_CARDS_CONFIG = [
     key: "todaySales",
     label: "Today's Sales",
     icon: TrendingUp,
-    color: "#a0c4ff",
-    textColor: "hsl(220 50% 20%)",
+    color: "#bc5090",
+    textColor: "white",
   },
   {
     key: "monthRevenue",
     label: "Monthly Revenue",
     icon: Receipt,
-    color: "#caffbf",
-    textColor: "hsl(135 50% 20%)",
+    color: "#ff6361",
+    textColor: "white",
   },
   {
     key: "totalStaff",
     label: "Total Staff",
     icon: Users,
-    color: "#bdb2ff",
-    textColor: "hsl(252 40% 20%)",
+    color: "#8a508f",
+    textColor: "white",
   },
   {
     key: "lowStock",
     label: "Low Stock Items",
     icon: AlertTriangle,
-    color: "#ffadad",
-    textColor: "hsl(0 60% 20%)",
+    color: "#ffa600",
+    textColor: "black",
   },
 ];
 
 const PAYMENT_COLORS: Record<string, string> = {
-  CASH: "#caffbf",
-  UPI:  "#a0c4ff",
-  CARD: "#bdb2ff",
+  CASH: "#8a508f",
+  UPI:  "#bc5090",
+  CARD: "#2c4875",
 };
 
 const STATUS_COLORS: Record<string, string> = {
-  PAID:      "#caffbf",
-  PENDING:   "#ffd6a5",
-  CANCELLED: "#ffadad",
+  PAID:      "#bc5090",
+  PENDING:   "#ff8531",
+  CANCELLED: "#ff6361",
 };
 
 export default function DashboardPage() {
@@ -174,7 +174,7 @@ export default function DashboardPage() {
             <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full border border-border/50 animate-in fade-in zoom-in duration-300">
               <span
                 className="w-2 h-2 rounded-full animate-pulse"
-                style={{ background: "#caffbf" }}
+                style={{ background: "#bc5090" }}
               />
               Live updated
             </div>
@@ -299,8 +299,8 @@ export default function DashboardPage() {
                     <div
                       className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0"
                       style={{
-                        background: PAYMENT_COLORS[inv.paymentMethod] ?? "#a0c4ff",
-                        color: "hsl(220 50% 20%)",
+                        background: PAYMENT_COLORS[inv.paymentMethod] ?? "#8a508f",
+                        color: "white",
                       }}
                     >
                       {inv.paymentMethod.slice(0, 1)}
@@ -316,8 +316,8 @@ export default function DashboardPage() {
                     <Badge
                       className="text-xs"
                       style={{
-                        background: STATUS_COLORS[inv.status] ?? "#a0c4ff",
-                        color: "hsl(220 50% 20%)",
+                        background: STATUS_COLORS[inv.status] ?? "#2c4875",
+                        color: "white",
                         border: "none",
                       }}
                     >

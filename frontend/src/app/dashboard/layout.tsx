@@ -30,14 +30,14 @@ import {
 } from "lucide-react";
 
 const NAV_ITEMS = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, color: "#a0c4ff" },
-  { href: "/dashboard/billing", label: "Billing", icon: Receipt, color: "#caffbf" },
-  { href: "/dashboard/products", label: "Products", icon: Package, color: "#ffd6a5" },
-  { href: "/dashboard/staff", label: "Staff", icon: Users, color: "#bdb2ff" },
-  { href: "/dashboard/attendance", label: "Attendance", icon: CalendarDays, color: "#9bf6ff" },
-  { href: "/dashboard/salary", label: "Salary", icon: Wallet, color: "#fdffb6" },
-  { href: "/dashboard/customers", label: "Customers", icon: UserCircle, color: "#ffc6ff" },
-  { href: "/dashboard/analytics", label: "Analytics", icon: BarChart3, color: "#ffadad" },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, color: "#8a508f" },
+  { href: "/dashboard/billing", label: "Billing", icon: Receipt, color: "#bc5090" },
+  { href: "/dashboard/products", label: "Products", icon: Package, color: "#ff6361" },
+  { href: "/dashboard/staff", label: "Staff", icon: Users, color: "#ff8531" },
+  { href: "/dashboard/attendance", label: "Attendance", icon: CalendarDays, color: "#ffa600" },
+  { href: "/dashboard/salary", label: "Salary", icon: Wallet, color: "#ffd380" },
+  { href: "/dashboard/customers", label: "Customers", icon: UserCircle, color: "#2c4875" },
+  { href: "/dashboard/analytics", label: "Analytics", icon: BarChart3, color: "#bc5090" },
 ];
 
 function SidebarContent({
@@ -84,9 +84,9 @@ function SidebarContent({
         </div>
       </div>
 
-      {/* Pastel rainbow bar */}
+      {/* BOS Palette bar */}
       <div className="flex h-0.5 mx-5 rounded-full overflow-hidden mb-4">
-        {["#ffadad","#ffd6a5","#fdffb6","#caffbf","#9bf6ff","#a0c4ff","#bdb2ff","#ffc6ff"].map((c) => (
+        {["#003f5c","#2c4875","#8a508f","#bc5090","#ff6361","#ff8531","#ffa600","#ffd380"].map((c) => (
           <div key={c} className="flex-1" style={{ background: c }} />
         ))}
       </div>
@@ -140,15 +140,15 @@ function SidebarContent({
       >
         <div
           className="w-7 h-7 rounded-lg flex items-center justify-center"
-          style={{ background: "#ffadad33" }}
+          style={{ background: "#ff636133" }}
         >
-          <Bell className="w-4 h-4" style={{ color: "#ffadad" }} />
+          <Bell className="w-4 h-4" style={{ color: "#ff6361" }} />
         </div>
         <span className="flex-1">Notifications</span>
         {unreadCount > 0 && (
           <Badge
             className="text-xs px-1.5 py-0 h-5 min-w-5 flex items-center justify-center"
-            style={{ background: "#ffadad", color: "hsl(0 60% 20%)" }}
+            style={{ background: "#ff6361", color: "white" }}
           >
             {unreadCount > 9 ? "9+" : unreadCount}
           </Badge>
@@ -161,7 +161,7 @@ function SidebarContent({
           <Avatar className="w-8 h-8 flex-shrink-0">
             <AvatarFallback
               className="text-xs font-bold"
-              style={{ background: "#bdb2ff", color: "hsl(252 40% 20%)" }}
+              style={{ background: "#bc5090", color: "white" }}
             >
               {user?.name?.slice(0, 2).toUpperCase()}
             </AvatarFallback>

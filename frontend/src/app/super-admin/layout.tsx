@@ -16,9 +16,9 @@ import Image from "next/image";
 import { LayoutDashboard, Building2, BarChart3, LogOut, Menu, ChevronRight } from "lucide-react";
 
 const NAV = [
-  { href: "/super-admin", label: "Overview", icon: LayoutDashboard, color: "#a0c4ff" },
-  { href: "/super-admin/companies", label: "Companies", icon: Building2, color: "#caffbf" },
-  { href: "/super-admin/analytics", label: "Analytics", icon: BarChart3, color: "#bdb2ff" },
+  { href: "/super-admin", label: "Overview", icon: LayoutDashboard, color: "#8a508f" },
+  { href: "/super-admin/companies", label: "Companies", icon: Building2, color: "#bc5090" },
+  { href: "/super-admin/analytics", label: "Analytics", icon: BarChart3, color: "#ff6361" },
 ];
 
 function SidebarContent({ onClose }: { onClose?: () => void }) {
@@ -54,7 +54,7 @@ function SidebarContent({ onClose }: { onClose?: () => void }) {
         </div>
       </div>
       <div className="flex h-0.5 mx-5 rounded-full overflow-hidden mb-4">
-        {["#ffadad","#ffd6a5","#fdffb6","#caffbf","#9bf6ff","#a0c4ff","#bdb2ff","#ffc6ff"].map((c) => (
+        {["#003f5c","#2c4875","#8a508f","#bc5090","#ff6361","#ff8531","#ffa600","#ffd380"].map((c) => (
           <div key={c} className="flex-1" style={{ background: c }} />
         ))}
       </div>
@@ -69,7 +69,7 @@ function SidebarContent({ onClose }: { onClose?: () => void }) {
               )}>
               <div className="w-7 h-7 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110"
                 style={{ background: isActive ? item.color : `${item.color}33` }}>
-                <Icon className="w-4 h-4" style={{ color: isActive ? "hsl(220 50% 20%)" : item.color }} />
+                <Icon className="w-4 h-4" style={{ color: isActive ? "white" : item.color }} />
               </div>
               <span className="flex-1">{item.label}</span>
               {isActive && <ChevronRight className="w-3.5 h-3.5 opacity-60" />}
@@ -81,7 +81,7 @@ function SidebarContent({ onClose }: { onClose?: () => void }) {
       <div className="p-3">
         <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-sidebar-accent/50">
           <Avatar className="w-8 h-8 flex-shrink-0">
-            <AvatarFallback className="text-xs font-bold" style={{ background: "#a0c4ff", color: "hsl(220 50% 20%)" }}>
+            <AvatarFallback className="text-xs font-bold" style={{ background: "#8a508f", color: "white" }}>
               {user?.name?.slice(0, 2).toUpperCase()}
             </AvatarFallback>
           </Avatar>

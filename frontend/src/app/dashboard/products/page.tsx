@@ -227,9 +227,9 @@ export default function ProductsPage() {
   };
 
   const STOCK_TYPE_COLORS: Record<string, string> = {
-    ADD: "#caffbf",
-    SUBTRACT: "#ffadad",
-    SET: "#a0c4ff",
+    ADD: "#bc5090",
+    SUBTRACT: "#ff6361",
+    SET: "#2c4875",
   };
 
   return (
@@ -241,7 +241,7 @@ export default function ProductsPage() {
           <Button
             onClick={() => { productForm.reset(); setAddOpen(true); }}
             className="gap-2"
-            style={{ background: "#a0c4ff", color: "hsl(220 50% 20%)" }}
+            style={{ background: "#bc5090", color: "white" }}
           >
             <Plus className="w-4 h-4" /> Add Product
           </Button>
@@ -288,7 +288,7 @@ export default function ProductsPage() {
               title="No products found"
               description="Add your first product to start billing"
               action={
-                <Button onClick={() => setAddOpen(true)} style={{ background: "#a0c4ff", color: "hsl(220 50% 20%)" }}>
+                <Button onClick={() => setAddOpen(true)} style={{ background: "#bc5090", color: "white" }}>
                   <Plus className="w-4 h-4 mr-2" /> Add Product
                 </Button>
               }
@@ -318,14 +318,14 @@ export default function ProductsPage() {
                         <div className="flex items-center gap-3">
                           <div
                             className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-bold"
-                            style={{ background: "#a0c4ff33", color: "#a0c4ff" }}
+                            style={{ background: "#bc509033", color: "#bc5090" }}
                           >
                             {product.name.slice(0, 2).toUpperCase()}
                           </div>
                           <div>
                             <p className="font-medium">{product.name}</p>
                             {product.isLowStock && (
-                              <p className="text-xs flex items-center gap-1" style={{ color: "#ffadad" }}>
+                              <p className="text-xs flex items-center gap-1" style={{ color: "#ff6361" }}>
                                 <AlertTriangle className="w-3 h-3" /> Low stock
                               </p>
                             )}
@@ -343,7 +343,7 @@ export default function ProductsPage() {
                       <td className="px-4 py-3 text-right">
                         <span
                           className="font-semibold"
-                          style={{ color: product.isLowStock ? "#ffadad" : "inherit" }}
+                          style={{ color: product.isLowStock ? "#ff6361" : "inherit" }}
                         >
                           {product.stockQty}
                         </span>
@@ -445,7 +445,7 @@ export default function ProductsPage() {
             </div>
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setAddOpen(false)}>Cancel</Button>
-              <Button type="submit" disabled={submitting} style={{ background: "#a0c4ff", color: "hsl(220 50% 20%)" }}>
+              <Button type="submit" disabled={submitting} style={{ background: "#bc5090", color: "white" }}>
                 {submitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
                 Add Product
               </Button>
@@ -481,7 +481,7 @@ export default function ProductsPage() {
             </div>
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setEditOpen(false)}>Cancel</Button>
-              <Button type="submit" disabled={submitting} style={{ background: "#caffbf", color: "hsl(135 50% 20%)" }}>
+              <Button type="submit" disabled={submitting} style={{ background: "#bc5090", color: "white" }}>
                 {submitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
                 Save Changes
               </Button>
@@ -516,7 +516,7 @@ export default function ProductsPage() {
                     )}
                     style={stockForm.watch("type") === type ? {
                       background: STOCK_TYPE_COLORS[type],
-                      color: "hsl(220 50% 20%)",
+                      color: "white",
                       borderColor: STOCK_TYPE_COLORS[type],
                     } : {}}
                   >
@@ -539,7 +539,7 @@ export default function ProductsPage() {
                 disabled={submitting}
                 style={{
                   background: STOCK_TYPE_COLORS[stockForm.watch("type")],
-                  color: "hsl(220 50% 20%)",
+                  color: "white",
                 }}
               >
                 {submitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
@@ -565,7 +565,7 @@ export default function ProductsPage() {
             <Button
               onClick={handleDelete}
               disabled={submitting}
-              style={{ background: "#ffadad", color: "hsl(0 60% 20%)" }}
+              style={{ background: "#ff6361", color: "white" }}
             >
               {submitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
               Delete

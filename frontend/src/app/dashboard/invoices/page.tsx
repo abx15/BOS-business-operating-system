@@ -34,15 +34,15 @@ interface Invoice {
 }
 
 const STATUS_STYLES: Record<string, { bg: string; color: string }> = {
-  PAID:      { bg: "#caffbf", color: "hsl(135 50% 20%)" },
-  PENDING:   { bg: "#ffd6a5", color: "hsl(30 60% 20%)" },
-  CANCELLED: { bg: "#ffadad", color: "hsl(0 60% 20%)" },
+  PAID:      { bg: "#bc5090", color: "white" },
+  PENDING:   { bg: "#ff8531", color: "white" },
+  CANCELLED: { bg: "#ff6361", color: "white" },
 };
 
 const PAYMENT_STYLES: Record<string, { bg: string; color: string }> = {
-  CASH: { bg: "#caffbf", color: "hsl(135 50% 20%)" },
-  UPI:  { bg: "#a0c4ff", color: "hsl(220 50% 20%)" },
-  CARD: { bg: "#bdb2ff", color: "hsl(252 40% 20%)" },
+  CASH: { bg: "#bc5090", color: "white" },
+  UPI:  { bg: "#8a508f", color: "white" },
+  CARD: { bg: "#2c4875", color: "white" },
 };
 
 export default function InvoicesPage() {
@@ -266,7 +266,7 @@ export default function InvoicesPage() {
             <Button
               onClick={handleCancel}
               disabled={cancelling}
-              style={{ background: "#ffadad", color: "hsl(0 60% 20%)" }}
+              style={{ background: "#ff6361", color: "white" }}
             >
               {cancelling ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
               Cancel Invoice

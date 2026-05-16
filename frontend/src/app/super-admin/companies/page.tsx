@@ -53,9 +53,9 @@ interface Company {
 }
 
 const PLAN_STYLES: Record<string, { bg: string; color: string }> = {
-  BASIC: { bg: "#9bf6ff", color: "hsl(190 60% 20%)" },
-  PRO: { bg: "#bdb2ff", color: "hsl(252 40% 20%)" },
-  ENTERPRISE: { bg: "#ffd6a5", color: "hsl(30 60% 20%)" },
+  BASIC: { bg: "#2c4875", color: "white" },
+  PRO: { bg: "#8a508f", color: "white" },
+  ENTERPRISE: { bg: "#bc5090", color: "white" },
 };
 
 export default function CompaniesPage() {
@@ -181,7 +181,7 @@ export default function CompaniesPage() {
         action={
           <Button
             onClick={() => setAddOpen(true)}
-            style={{ background: "#caffbf", color: "hsl(135 50% 20%)" }}
+            style={{ background: "#bc5090", color: "white" }}
             className="gap-2"
           >
             <Plus className="w-4 h-4" /> Add Company
@@ -213,7 +213,7 @@ export default function CompaniesPage() {
           action={
             <Button
               onClick={() => setAddOpen(true)}
-              style={{ background: "#caffbf", color: "hsl(135 50% 20%)" }}
+              style={{ background: "#bc5090", color: "white" }}
             >
               <Plus className="w-4 h-4 mr-2" />
               Add Company
@@ -235,9 +235,9 @@ export default function CompaniesPage() {
                     <div className="flex items-start gap-3">
                       <div
                         className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{ background: "#a0c4ff" }}
+                        style={{ background: "#bc5090" }}
                       >
-                        <Building2 className="w-5 h-5 text-[hsl(220_50%_20%)]" />
+                        <Building2 className="w-5 h-5 text-white" />
                       </div>
                       <div>
                         <div className="flex items-center gap-2 flex-wrap">
@@ -245,7 +245,7 @@ export default function CompaniesPage() {
                           {company.isVerified && (
                             <BadgeCheck
                               className="w-4 h-4"
-                              style={{ color: "#a0c4ff" }}
+                              style={{ color: "#bc5090" }}
                             />
                           )}
                           <Badge
@@ -257,8 +257,8 @@ export default function CompaniesPage() {
                           {company.isSuspended && (
                             <Badge
                               style={{
-                                background: "#ffadad",
-                                color: "hsl(0 60% 20%)",
+                                background: "#ff6361",
+                                color: "white",
                                 border: "none",
                               }}
                               className="text-xs"
@@ -269,8 +269,8 @@ export default function CompaniesPage() {
                           {isExpired && (
                             <Badge
                               style={{
-                                background: "#ffd6a5",
-                                color: "hsl(30 60% 20%)",
+                                background: "#ff8531",
+                                color: "white",
                                 border: "none",
                               }}
                               className="text-xs"
@@ -326,7 +326,7 @@ export default function CompaniesPage() {
                         <BadgeCheck
                           className="w-3.5 h-3.5"
                           style={{
-                            color: company.isVerified ? "#a0c4ff" : undefined,
+                            color: company.isVerified ? "#bc5090" : undefined,
                           }}
                         />
                       </Button>
@@ -465,7 +465,7 @@ export default function CompaniesPage() {
             <Button
               onClick={handleCreate}
               disabled={submitting}
-              style={{ background: "#caffbf", color: "hsl(135 50% 20%)" }}
+              style={{ background: "#bc5090", color: "white" }}
             >
               {submitting && <Loader2 className="w-4 h-4 animate-spin mr-2" />}{" "}
               Create Company
@@ -516,7 +516,7 @@ export default function CompaniesPage() {
             <Button
               onClick={handleCreateAdmin}
               disabled={submitting}
-              style={{ background: "#a0c4ff", color: "hsl(220 50% 20%)" }}
+              style={{ background: "#8a508f", color: "white" }}
             >
               {submitting && <Loader2 className="w-4 h-4 animate-spin mr-2" />}{" "}
               Create Login
@@ -566,7 +566,7 @@ export default function CompaniesPage() {
             <Button
               onClick={handleSetPlan}
               disabled={submitting}
-              style={{ background: "#bdb2ff", color: "hsl(252 40% 20%)" }}
+              style={{ background: "#bc5090", color: "white" }}
             >
               {submitting && <Loader2 className="w-4 h-4 animate-spin mr-2" />}{" "}
               Update Plan

@@ -75,7 +75,7 @@ export default function SalaryPage() {
         title="Salary Management"
         description={formatMonth(currentMonth)}
         action={
-          <Button onClick={handleGenerate} disabled={generating} style={{ background: "#fdffb6", color: "hsl(60 50% 20%)" }} className="gap-2">
+          <Button onClick={handleGenerate} disabled={generating} style={{ background: "#bc5090", color: "white" }} className="gap-2">
             {generating && <Loader2 className="w-4 h-4 animate-spin" />}
             Generate for {currentMonth}
           </Button>
@@ -90,10 +90,10 @@ export default function SalaryPage() {
           <Button variant="outline" size="icon" onClick={() => changeMonth(1)}><ChevronRight className="w-4 h-4" /></Button>
         </div>
         <div className="flex gap-3">
-          <div className="px-4 py-2 rounded-xl text-sm font-medium" style={{ background: "#caffbf", color: "hsl(135 50% 20%)" }}>
+          <div className="px-4 py-2 rounded-xl text-sm font-medium" style={{ background: "#bc5090", color: "white" }}>
             Paid: {formatCurrency(summary.totalPaid)}
           </div>
-          <div className="px-4 py-2 rounded-xl text-sm font-medium" style={{ background: "#ffd6a5", color: "hsl(30 60% 20%)" }}>
+          <div className="px-4 py-2 rounded-xl text-sm font-medium" style={{ background: "#ff8531", color: "white" }}>
             Pending: {formatCurrency(summary.totalPending)}
           </div>
         </div>
@@ -131,8 +131,8 @@ export default function SalaryPage() {
                       <td className="px-4 py-3 text-right font-semibold">{formatCurrency(sal.amount)}</td>
                       <td className="px-4 py-3">
                         <Badge style={sal.status === "PAID"
-                          ? { background: "#caffbf", color: "hsl(135 50% 20%)", border: "none" }
-                          : { background: "#ffd6a5", color: "hsl(30 60% 20%)", border: "none" }
+                          ? { background: "#bc5090", color: "white", border: "none" }
+                          : { background: "#ff8531", color: "white", border: "none" }
                         }>
                           {sal.status}
                         </Badge>
@@ -146,7 +146,7 @@ export default function SalaryPage() {
                             size="sm"
                             onClick={() => handlePay(sal.id, sal.staff.name)}
                             disabled={payingId === sal.id}
-                            style={{ background: "#caffbf", color: "hsl(135 50% 20%)" }}
+                            style={{ background: "#bc5090", color: "white" }}
                             className="h-7 text-xs gap-1"
                           >
                             {payingId === sal.id

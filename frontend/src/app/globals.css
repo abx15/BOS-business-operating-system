@@ -5,99 +5,85 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================
-   PASTEL RAINBOW — BOS Design System
-   Palette: #ffadad #ffd6a5 #fdffb6 #caffbf 
-            #9bf6ff #a0c4ff #bdb2ff #ffc6ff
+   BOS Design System — 9-Color Palette
+   Palette: #00202e #003f5c #2c4875 #8a508f 
+            #bc5090 #ff6361 #ff8531 #ffa600 #ffd380
    ============================================ */
 
 :root {
-  /* Pastel Rainbow Colors */
-  --pastel-red:    #ffadad;
-  --pastel-orange: #ffd6a5;
-  --pastel-yellow: #fdffb6;
-  --pastel-green:  #caffbf;
-  --pastel-cyan:   #9bf6ff;
-  --pastel-blue:   #a0c4ff;
-  --pastel-purple: #bdb2ff;
-  --pastel-pink:   #ffc6ff;
+  --background:           198 100% 9%;    /* #00202e */
+  --foreground:           0 0% 100%;
+  --card:                 199 100% 18%;   /* #003f5c */
+  --card-foreground:      0 0% 100%;
+  --popover:              199 100% 18%;
+  --popover-foreground:   0 0% 100%;
 
-  /* Semantic mappings — Light Mode */
-  --background:           0 0% 98%;
-  --foreground:           240 10% 10%;
-  --card:                 0 0% 100%;
-  --card-foreground:      240 10% 10%;
-  --popover:              0 0% 100%;
-  --popover-foreground:   240 10% 10%;
+  --primary:              324 44% 53%;   /* #bc5090 */
+  --primary-foreground:   0 0% 100%;
+  --secondary:            217 45% 32%;   /* #2c4875 */
+  --secondary-foreground: 0 0% 100%;
 
-  /* Primary = Pastel Blue */
-  --primary:              220 100% 80%;
-  --primary-foreground:   220 50% 20%;
+  --muted:                199 50% 15%;
+  --muted-foreground:     199 20% 65%;
+  --accent:               295 28% 44%;   /* #8a508f */
+  --accent-foreground:    0 0% 100%;
 
-  /* Secondary = Pastel Purple */
-  --secondary:            252 100% 85%;
-  --secondary-foreground: 252 40% 20%;
+  --destructive:          1 100% 69%;    /* #ff6361 */
+  --destructive-foreground: 0 0% 100%;
 
-  /* Muted */
-  --muted:                220 15% 95%;
-  --muted-foreground:     220 10% 45%;
+  --border:               199 50% 25%;
+  --input:                199 50% 25%;
+  --ring:                 39 100% 50%;   /* #ffa600 */
 
-  /* Accent = Pastel Green */
-  --accent:               135 100% 87%;
-  --accent-foreground:    135 50% 20%;
-
-  /* Destructive = Pastel Red */
-  --destructive:          0 100% 83%;
-  --destructive-foreground: 0 60% 20%;
-
-  --border:               220 15% 88%;
-  --input:                220 15% 92%;
-  --ring:                 220 100% 80%;
-
-  /* Chart colors — pastel rainbow */
-  --chart-1: 220 100% 80%;
-  --chart-2: 135 100% 87%;
-  --chart-3: 252 100% 85%;
-  --chart-4: 0 100% 83%;
-  --chart-5: 30 100% 82%;
-
-  --radius: 0.75rem;
+  --radius: 1rem;
 
   /* Sidebar */
-  --sidebar:              240 10% 10%;
-  --sidebar-foreground:   0 0% 95%;
-  --sidebar-primary:      220 100% 80%;
-  --sidebar-primary-foreground: 220 50% 20%;
-  --sidebar-accent:       240 8% 18%;
-  --sidebar-accent-foreground: 0 0% 90%;
-  --sidebar-border:       240 8% 20%;
-  --sidebar-ring:         220 100% 80%;
+  --sidebar:              198 100% 9%;
+  --sidebar-foreground:   0 0% 100%;
+  --sidebar-primary:      324 44% 53%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent:       199 100% 18%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border:       199 50% 25%;
+  --sidebar-ring:         39 100% 50%;
+
+  /* Palette Utilities */
+  --bos-1: #00202e;
+  --bos-2: #003f5c;
+  --bos-3: #2c4875;
+  --bos-4: #8a508f;
+  --bos-5: #bc5090;
+  --bos-6: #ff6361;
+  --bos-7: #ff8531;
+  --bos-8: #ffa600;
+  --bos-9: #ffd380;
 }
 
 .dark {
-  --background:           240 10% 6%;
-  --foreground:           0 0% 95%;
-  --card:                 240 10% 9%;
-  --card-foreground:      0 0% 95%;
-  --popover:              240 10% 9%;
-  --popover-foreground:   0 0% 95%;
-  --primary:              220 100% 75%;
-  --primary-foreground:   220 50% 15%;
-  --secondary:            252 60% 30%;
-  --secondary-foreground: 252 100% 90%;
-  --muted:                240 8% 15%;
-  --muted-foreground:     240 5% 55%;
-  --accent:               135 50% 25%;
-  --accent-foreground:    135 100% 88%;
-  --destructive:          0 70% 35%;
-  --destructive-foreground: 0 100% 90%;
-  --border:               240 8% 18%;
-  --input:                240 8% 18%;
-  --ring:                 220 100% 75%;
-  --chart-1: 220 100% 75%;
-  --chart-2: 135 70% 60%;
-  --chart-3: 252 100% 78%;
-  --chart-4: 0 80% 65%;
-  --chart-5: 30 90% 65%;
+  --background:           198 100% 9%;
+  --foreground:           0 0% 98%;
+  --card:                 199 100% 18%;
+  --card-foreground:      0 0% 98%;
+  --popover:              199 100% 18%;
+  --popover-foreground:   0 0% 98%;
+  --primary:              324 44% 53%;
+  --primary-foreground:   0 0% 100%;
+  --secondary:            217 45% 32%;
+  --secondary-foreground: 0 0% 100%;
+  --muted:                199 50% 15%;
+  --muted-foreground:     199 20% 65%;
+  --accent:               295 28% 44%;
+  --accent-foreground:    0 0% 100%;
+  --destructive:          1 100% 69%;
+  --destructive-foreground: 0 0% 100%;
+  --border:               199 50% 25%;
+  --input:                199 50% 25%;
+  --ring:                 39 100% 50%;
+  --chart-1: 324 44% 53%;
+  --chart-2: 1 100% 69%;
+  --chart-3: 24 100% 60%;
+  --chart-4: 39 100% 50%;
+  --chart-5: 39 100% 75%;
 }
 
 @theme inline {
@@ -134,21 +120,85 @@
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
-  /* Pastel Rainbow direct utilities */
-  --color-pastel-red:    var(--pastel-red);
-  --color-pastel-orange: var(--pastel-orange);
-  --color-pastel-yellow: var(--pastel-yellow);
-  --color-pastel-green:  var(--pastel-green);
-  --color-pastel-cyan:   var(--pastel-cyan);
-  --color-pastel-blue:   var(--pastel-blue);
-  --color-pastel-purple: var(--pastel-purple);
-  --color-pastel-pink:   var(--pastel-pink);
+  /* BOS Palette direct utilities */
+  --color-bos-1: var(--bos-1);
+  --color-bos-2: var(--bos-2);
+  --color-bos-3: var(--bos-3);
+  --color-bos-4: var(--bos-4);
+  --color-bos-5: var(--bos-5);
+  --color-bos-6: var(--bos-6);
+  --color-bos-7: var(--bos-7);
+  --color-bos-8: var(--bos-8);
+  --color-bos-9: var(--bos-9);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
+}
+
+/* Futuristic Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-mask {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #bc5090, #ff6361, #ffa600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-indigo {
+  box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.3);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.mask-radial {
+  mask-image: radial-gradient(circle, black, transparent 80%);
+}
+
+[data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 * {
@@ -175,7 +225,7 @@ html {
   background: hsl(var(--muted));
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--pastel-blue);
+  background: #bc5090;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {

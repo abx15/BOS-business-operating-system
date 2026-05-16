@@ -48,14 +48,14 @@ interface Product {
 }
 
 const PAYMENT_OPTIONS = [
-  { value: "CASH", label: "Cash", color: "#caffbf", textColor: "hsl(135 50% 20%)" },
-  { value: "UPI",  label: "UPI",  color: "#a0c4ff", textColor: "hsl(220 50% 20%)" },
-  { value: "CARD", label: "Card", color: "#bdb2ff", textColor: "hsl(252 40% 20%)" },
+  { value: "CASH", label: "Cash", color: "#bc5090", textColor: "white" },
+  { value: "UPI",  label: "UPI",  color: "#8a508f", textColor: "white" },
+  { value: "CARD", label: "Card", color: "#2c4875", textColor: "white" },
 ] as const;
 
 const CATEGORY_COLORS = [
-  "#a0c4ff", "#caffbf", "#bdb2ff", "#ffd6a5",
-  "#9bf6ff", "#ffc6ff", "#ffadad", "#fdffb6",
+  "#003f5c", "#2c4875", "#8a508f", "#bc5090",
+  "#ff6361", "#ff8531", "#ffa600", "#ffd380",
 ];
 
 export default function BillingPage() {
@@ -165,9 +165,9 @@ export default function BillingPage() {
       <div className="max-w-md mx-auto mt-20 text-center space-y-6">
         <div
           className="w-20 h-20 rounded-full flex items-center justify-center mx-auto"
-          style={{ background: "#caffbf" }}
+          style={{ background: "#bc5090" }}
         >
-          <CheckCircle2 className="w-10 h-10" style={{ color: "hsl(135 50% 20%)" }} />
+          <CheckCircle2 className="w-10 h-10" style={{ color: "white" }} />
         </div>
         <div>
           <h2 className="text-2xl font-bold">Invoice Created!</h2>
@@ -179,7 +179,7 @@ export default function BillingPage() {
         <div className="flex gap-3 justify-center">
           <Button
             onClick={handleDownloadPDF}
-            style={{ background: "#a0c4ff", color: "hsl(220 50% 20%)" }}
+            style={{ background: "#8a508f", color: "white" }}
             className="gap-2"
           >
             <Download className="w-4 h-4" /> Download PDF
@@ -221,7 +221,7 @@ export default function BillingPage() {
                       ? "border-transparent"
                       : "border-border bg-transparent text-muted-foreground"
                   )}
-                  style={activeCategory === "all" ? { background: "#a0c4ff", color: "hsl(220 50% 20%)", borderColor: "#a0c4ff" } : {}}
+                  style={activeCategory === "all" ? { background: "#bc5090", color: "white", borderColor: "#bc5090" } : {}}
                 >
                   All Products
                 </button>
@@ -238,7 +238,7 @@ export default function BillingPage() {
                     )}
                     style={activeCategory === cat ? {
                       background: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
-                      color: "hsl(220 50% 20%)",
+                      color: "white",
                       borderColor: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
                     } : {}}
                   >
@@ -293,7 +293,7 @@ export default function BillingPage() {
                     >
                       <div
                         className="w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold mb-2 transition-transform group-hover:scale-110"
-                        style={{ background: color, color: "hsl(220 50% 20%)" }}
+                        style={{ background: color, color: "white" }}
                       >
                         {product.name.slice(0, 2).toUpperCase()}
                       </div>
@@ -309,7 +309,7 @@ export default function BillingPage() {
                           {outOfStock ? "OUT OF STOCK" : `STOCK: ${product.stockQty}`}
                         </span>
                         {inCart && (
-                          <Badge className="text-xs px-1.5 py-0 h-5" style={{ background: color, color: "hsl(220 50% 20%)", border: "none" }}>
+                          <Badge className="text-xs px-1.5 py-0 h-5" style={{ background: color, color: "white", border: "none" }}>
                             x{inCart.quantity}
                           </Badge>
                         )}
@@ -510,7 +510,7 @@ export default function BillingPage() {
                   </div>
                 )}
                 {discount > 0 && (
-                  <div className="flex justify-between font-medium" style={{ color: "#caffbf" }}>
+                  <div className="flex justify-between font-medium" style={{ color: "#bc5090" }}>
                     <span>Discount</span>
                     <span>-{formatCurrency(discount)}</span>
                   </div>
@@ -525,7 +525,7 @@ export default function BillingPage() {
                 className="w-full h-12 font-bold gap-2 text-sm uppercase tracking-wider shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98]"
                 onClick={handleSubmitInvoice}
                 disabled={submitting || items.length === 0}
-                style={{ background: "#caffbf", color: "hsl(135 50% 20%)" }}
+                style={{ background: "#bc5090", color: "white" }}
               >
                 {submitting
                   ? <><Loader2 className="w-5 h-5 animate-spin" /> Creating...</>

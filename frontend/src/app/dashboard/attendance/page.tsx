@@ -15,9 +15,9 @@ interface StaffMember { id: string; name: string; designation: string; }
 interface AttendanceRecord { staffId: string; date: string; status: "PRESENT" | "ABSENT" | "HALF_DAY"; }
 
 const STATUS_STYLES = {
-  PRESENT:  { bg: "#caffbf", color: "hsl(135 50% 20%)", label: "P" },
-  ABSENT:   { bg: "#ffadad", color: "hsl(0 60% 20%)", label: "A" },
-  HALF_DAY: { bg: "#ffd6a5", color: "hsl(30 60% 20%)", label: "H" },
+  PRESENT:  { bg: "#bc5090", color: "white", label: "P" },
+  ABSENT:   { bg: "#ff6361", color: "white", label: "A" },
+  HALF_DAY: { bg: "#ff8531", color: "white", label: "H" },
 };
 
 export default function AttendancePage() {

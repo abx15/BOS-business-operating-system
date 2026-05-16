@@ -31,10 +31,10 @@ export default function SuperAdminAnalyticsPage() {
   }, []);
 
   const statCards = [
-    { label: "Total Companies", value: stats?.totalCompanies ?? 0, icon: Building2, color: "#a0c4ff" },
-    { label: "Active Companies", value: stats?.totalActiveCompanies ?? 0, icon: Users, color: "#caffbf" },
-    { label: "Platform Revenue", value: formatCurrency(stats?.totalRevenue ?? 0), icon: TrendingUp, color: "#ffd6a5" },
-    { label: "Total Invoices", value: stats?.totalInvoices ?? 0, icon: Receipt, color: "#bdb2ff" },
+    { label: "Total Companies", value: stats?.totalCompanies ?? 0, icon: Building2, color: "#8a508f" },
+    { label: "Active Companies", value: stats?.totalActiveCompanies ?? 0, icon: Users, color: "#bc5090" },
+    { label: "Platform Revenue", value: formatCurrency(stats?.totalRevenue ?? 0), icon: TrendingUp, color: "#ff8531" },
+    { label: "Total Invoices", value: stats?.totalInvoices ?? 0, icon: Receipt, color: "#2c4875" },
   ];
 
   return (
@@ -77,7 +77,7 @@ export default function SuperAdminAnalyticsPage() {
                   <XAxis dataKey="month" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
                   <YAxis tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
                   <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: "8px" }} />
-                  <Line type="monotone" dataKey="count" stroke="#a0c4ff" strokeWidth={3} dot={{ fill: "#a0c4ff", r: 4 }} activeDot={{ r: 6 }} />
+                  <Line type="monotone" dataKey="count" stroke="#bc5090" strokeWidth={3} dot={{ fill: "#bc5090", r: 4 }} activeDot={{ r: 6 }} />
                 </LineChart>
               </ResponsiveContainer>
             )}

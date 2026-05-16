@@ -47,9 +47,9 @@ export default function AnalyticsPage() {
       {/* Revenue comparison cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {[
-          { label: "This Month", value: comparison?.thisMonth?.revenue ?? 0, color: "#a0c4ff", sub: `${comparison?.thisMonth?.invoiceCount ?? 0} invoices` },
-          { label: "Last Month", value: comparison?.lastMonth?.revenue ?? 0, color: "#bdb2ff", sub: `${comparison?.lastMonth?.invoiceCount ?? 0} invoices` },
-          { label: "Growth", value: null, color: isPositive ? "#caffbf" : "#ffadad", sub: "vs last month" },
+          { label: "This Month", value: comparison?.thisMonth?.revenue ?? 0, color: "#bc5090", sub: `${comparison?.thisMonth?.invoiceCount ?? 0} invoices` },
+          { label: "Last Month", value: comparison?.lastMonth?.revenue ?? 0, color: "#8a508f", sub: `${comparison?.lastMonth?.invoiceCount ?? 0} invoices` },
+          { label: "Growth", value: null, color: isPositive ? "#bc5090" : "#ff6361", sub: "vs last month" },
         ].map((card) => (
           <Card key={card.label} className="border-border/50">
             <CardContent className="p-4">
@@ -59,10 +59,10 @@ export default function AnalyticsPage() {
               ) : (
                 <div className="flex items-center gap-2 mt-1">
                   {isPositive
-                    ? <TrendingUp className="w-6 h-6" style={{ color: "#caffbf" }} />
-                    : <TrendingDown className="w-6 h-6" style={{ color: "#ffadad" }} />
+                    ? <TrendingUp className="w-6 h-6" style={{ color: "#bc5090" }} />
+                    : <TrendingDown className="w-6 h-6" style={{ color: "#ff6361" }} />
                   }
-                  <p className="text-2xl font-bold" style={{ color: isPositive ? "#caffbf" : "#ffadad" }}>
+                  <p className="text-2xl font-bold" style={{ color: isPositive ? "#bc5090" : "#ff6361" }}>
                     {isPositive ? "+" : ""}{growth}%
                   </p>
                 </div>
@@ -109,7 +109,7 @@ export default function AnalyticsPage() {
                   <div key={product.productId} className="flex items-center gap-3">
                     <span
                       className="w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold flex-shrink-0"
-                      style={{ background: CHART_COLORS[i % CHART_COLORS.length], color: "hsl(220 50% 20%)" }}
+                      style={{ background: CHART_COLORS[i % CHART_COLORS.length], color: "white" }}
                     >
                       {i + 1}
                     </span>
@@ -190,14 +190,14 @@ export default function AnalyticsPage() {
                   <div key={staff.staffId} className="flex items-center gap-4">
                     <p className="text-sm font-medium w-32 truncate">{staff.name}</p>
                     <div className="flex-1 flex h-4 rounded-full overflow-hidden gap-0.5">
-                      {staff.present > 0 && <div style={{ flex: staff.present, background: "#caffbf" }} />}
-                      {staff.halfDay > 0 && <div style={{ flex: staff.halfDay * 0.5, background: "#ffd6a5" }} />}
-                      {staff.absent > 0 && <div style={{ flex: staff.absent, background: "#ffadad" }} />}
+                      {staff.present > 0 && <div style={{ flex: staff.present, background: "#bc5090" }} />}
+                      {staff.halfDay > 0 && <div style={{ flex: staff.halfDay * 0.5, background: "#ff8531" }} />}
+                      {staff.absent > 0 && <div style={{ flex: staff.absent, background: "#ff6361" }} />}
                     </div>
                     <div className="flex gap-2 text-xs text-muted-foreground w-28 justify-end">
-                      <span style={{ color: "#caffbf" }}>{staff.present}P</span>
-                      <span style={{ color: "#ffadad" }}>{staff.absent}A</span>
-                      <span style={{ color: "#ffd6a5" }}>{staff.halfDay}H</span>
+                      <span style={{ color: "#bc5090" }}>{staff.present}P</span>
+                      <span style={{ color: "#ff6361" }}>{staff.absent}A</span>
+                      <span style={{ color: "#ff8531" }}>{staff.halfDay}H</span>
                     </div>
                   </div>
                 );

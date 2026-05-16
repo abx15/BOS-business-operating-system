@@ -45,7 +45,7 @@ const staffSchema = z.object({
 
 type StaffForm = z.infer<typeof staffSchema>;
 
-const AVATAR_COLORS = ["#a0c4ff","#caffbf","#bdb2ff","#ffd6a5","#9bf6ff","#ffc6ff","#ffadad","#fdffb6"];
+const AVATAR_COLORS = ["#003f5c","#2c4875","#8a508f","#bc5090","#ff6361","#ff8531","#ffa600","#ffd380"];
 
 export default function StaffPage() {
   const [staff, setStaff] = useState<StaffMember[]>([]);
@@ -189,7 +189,7 @@ export default function StaffPage() {
         title="Staff Management"
         description={`${total} employees`}
         action={
-          <Button onClick={() => { form.reset(); setAddOpen(true); }} style={{ background: "#bdb2ff", color: "hsl(252 40% 20%)" }} className="gap-2">
+          <Button onClick={() => { form.reset(); setAddOpen(true); }} style={{ background: "#bc5090", color: "white" }} className="gap-2">
             <Plus className="w-4 h-4" /> Add Staff
           </Button>
         }
@@ -206,7 +206,7 @@ export default function StaffPage() {
         </div>
       ) : staff.length === 0 ? (
         <EmptyState icon={Users} title="No staff members" description="Add your first employee"
-          action={<Button onClick={() => setAddOpen(true)} style={{ background: "#bdb2ff", color: "hsl(252 40% 20%)" }}><Plus className="w-4 h-4 mr-2" />Add Staff</Button>}
+          action={<Button onClick={() => setAddOpen(true)} style={{ background: "#bc5090", color: "white" }}><Plus className="w-4 h-4 mr-2" />Add Staff</Button>}
         />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -218,7 +218,7 @@ export default function StaffPage() {
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <Avatar className="w-11 h-11">
-                        <AvatarFallback className="text-sm font-bold" style={{ background: color, color: "hsl(220 50% 20%)" }}>
+                        <AvatarFallback className="text-sm font-bold" style={{ background: color, color: "white" }}>
                           {member.name.slice(0, 2).toUpperCase()}
                         </AvatarFallback>
                       </Avatar>
@@ -226,7 +226,7 @@ export default function StaffPage() {
                         <div className="flex items-center gap-1.5">
                           <p className="font-semibold text-sm">{member.name}</p>
                           {member.isVerified && (
-                            <BadgeCheck className="w-4 h-4" style={{ color: "#a0c4ff" }} />
+                            <BadgeCheck className="w-4 h-4" style={{ color: "#bc5090" }} />
                           )}
                         </div>
                         <p className="text-xs text-muted-foreground">{member.designation}</p>
@@ -251,8 +251,8 @@ export default function StaffPage() {
                       className="text-xs cursor-pointer"
                       onClick={() => handleVerify(member)}
                       style={member.isVerified
-                        ? { background: "#caffbf", color: "hsl(135 50% 20%)", border: "none" }
-                        : { background: "#ffd6a5", color: "hsl(30 60% 20%)", border: "none" }
+                        ? { background: "#bc5090", color: "white", border: "none" }
+                        : { background: "#ff8531", color: "white", border: "none" }
                       }
                     >
                       {member.isVerified ? "✓ Verified" : "Unverified"}
@@ -282,7 +282,7 @@ export default function StaffPage() {
             <StaffFormFields />
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setAddOpen(false)}>Cancel</Button>
-              <Button type="submit" disabled={submitting} style={{ background: "#bdb2ff", color: "hsl(252 40% 20%)" }}>
+              <Button type="submit" disabled={submitting} style={{ background: "#bc5090", color: "white" }}>
                 {submitting && <Loader2 className="w-4 h-4 animate-spin mr-2" />} Add Staff
               </Button>
             </DialogFooter>
@@ -298,7 +298,7 @@ export default function StaffPage() {
             <StaffFormFields />
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setEditOpen(false)}>Cancel</Button>
-              <Button type="submit" disabled={submitting} style={{ background: "#caffbf", color: "hsl(135 50% 20%)" }}>
+              <Button type="submit" disabled={submitting} style={{ background: "#bc5090", color: "white" }}>
                 {submitting && <Loader2 className="w-4 h-4 animate-spin mr-2" />} Save Changes
               </Button>
             </DialogFooter>
@@ -313,7 +313,7 @@ export default function StaffPage() {
           <p className="text-sm text-muted-foreground">Remove <span className="font-semibold text-foreground">{selected?.name}</span> from your staff records?</p>
           <DialogFooter>
             <Button variant="outline" onClick={() => setDeleteOpen(false)}>Cancel</Button>
-            <Button onClick={handleDelete} disabled={submitting} style={{ background: "#ffadad", color: "hsl(0 60% 20%)" }}>
+            <Button onClick={handleDelete} disabled={submitting} style={{ background: "#ff6361", color: "white" }}>
               {submitting && <Loader2 className="w-4 h-4 animate-spin mr-2" />} Remove
             </Button>
           </DialogFooter>

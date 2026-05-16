@@ -128,7 +128,7 @@ export default function CustomersPage() {
                   <div className="flex items-center gap-3">
                     <div 
                       className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm"
-                      style={{ background: "#ffc6ff33", color: "#ffc6ff" }}
+                      style={{ background: "#bc509033", color: "#bc5090" }}
                     >
                       {customer.name.slice(0, 2).toUpperCase()}
                     </div>
@@ -158,7 +158,7 @@ export default function CustomersPage() {
                   <div className="flex-1">
                     <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Total Bills</p>
                     <p className="font-bold flex items-center gap-1.5">
-                      <Receipt className="w-3.5 h-3.5 text-blue-400" />
+                      <Receipt className="w-3.5 h-3.5 text-brand-gold" style={{ color: "#ffa600" }} />
                       {customer._count.invoices}
                     </p>
                   </div>
@@ -182,7 +182,7 @@ export default function CustomersPage() {
         <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col p-0 overflow-hidden">
           <DialogHeader className="p-6 pb-2">
             <DialogTitle className="flex items-center gap-2">
-              <History className="w-5 h-5 text-purple-400" />
+              <History className="w-5 h-5 text-brand-magenta" style={{ color: "#bc5090" }} />
               Purchase History — {selectedCustomer?.name}
             </DialogTitle>
           </DialogHeader>
@@ -209,7 +209,7 @@ export default function CustomersPage() {
                     </div>
                     <div className="text-right">
                       <p className="font-bold text-lg">{formatCurrency(inv.total)}</p>
-                      <p className="text-[10px] uppercase tracking-wider text-green-400">{inv.status}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-brand-magenta" style={{ color: "#bc5090" }}>{inv.status}</p>
                     </div>
                   </div>
                 ))}

@@ -19,10 +19,10 @@ export default function SuperAdminOverview() {
   }, []);
 
   const stats = [
-    { label: "Total Companies", value: analytics?.totalCompanies ?? 0, icon: Building2, color: "#a0c4ff" },
-    { label: "Active Companies", value: analytics?.activeCompanies ?? 0, icon: TrendingUp, color: "#caffbf" },
-    { label: "Total Staff", value: analytics?.totalStaff ?? 0, icon: Users, color: "#bdb2ff" },
-    { label: "Expired Plans", value: analytics?.expiredCompanies ?? 0, icon: AlertCircle, color: "#ffadad" },
+    { label: "Total Companies", value: analytics?.totalCompanies ?? 0, icon: Building2, color: "#8a508f", textColor: "white" },
+    { label: "Active Companies", value: analytics?.activeCompanies ?? 0, icon: TrendingUp, color: "#bc5090", textColor: "white" },
+    { label: "Total Staff", value: analytics?.totalStaff ?? 0, icon: Users, color: "#2c4875", textColor: "white" },
+    { label: "Expired Plans", value: analytics?.expiredCompanies ?? 0, icon: AlertCircle, color: "#ff6361", textColor: "white" },
   ];
 
   return (
@@ -37,7 +37,7 @@ export default function SuperAdminOverview() {
                 {loading ? <Skeleton className="h-20 w-full" /> : (
                   <>
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ background: s.color }}>
-                      <Icon className="w-5 h-5 text-[hsl(220_50%_20%)]" />
+                      <Icon className="w-5 h-5" style={{ color: s.textColor }} />
                     </div>
                     <p className="text-sm text-muted-foreground">{s.label}</p>
                     <p className="text-2xl font-bold mt-0.5">{s.value}</p>
@@ -54,9 +54,9 @@ export default function SuperAdminOverview() {
             <p className="text-sm font-semibold mb-3">Plan Distribution</p>
             <div className="flex gap-3 flex-wrap">
               {analytics.planDistribution.map((p: any, i: number) => {
-                const colors = ["#a0c4ff","#caffbf","#bdb2ff"];
+                const colors = ["#8a508f","#bc5090","#2c4875"];
                 return (
-                  <div key={p.plan} className="px-4 py-2 rounded-xl text-sm font-medium" style={{ background: colors[i % 3], color: "hsl(220 50% 20%)" }}>
+                  <div key={p.plan} className="px-4 py-2 rounded-xl text-sm font-medium" style={{ background: colors[i % 3], color: "white" }}>
                     {p.plan}: {p.count} companies
                   </div>
                 );

@@ -65,16 +65,16 @@ export default function LoginPage() {
       {/* Pastel blobs background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute -top-40 -left-40 w-96 h-96 rounded-full blur-3xl opacity-40"
-          style={{ background: "var(--pastel-blue)" }}
+          className="absolute -top-40 -left-40 w-96 h-96 rounded-full blur-3xl opacity-20"
+          style={{ background: "#003f5c" }}
         />
         <div
-          className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full blur-3xl opacity-40"
-          style={{ background: "var(--pastel-purple)" }}
+          className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full blur-3xl opacity-20"
+          style={{ background: "#8a508f" }}
         />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-3xl opacity-20"
-          style={{ background: "var(--pastel-pink)" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-3xl opacity-10"
+          style={{ background: "#bc5090" }}
         />
       </div>
 
@@ -99,7 +99,7 @@ export default function LoginPage() {
 
           {/* Pastel rainbow bar */}
           <div className="flex h-1.5 rounded-full overflow-hidden mt-3 mx-8">
-            {["#ffadad","#ffd6a5","#fdffb6","#caffbf","#9bf6ff","#a0c4ff","#bdb2ff","#ffc6ff"].map((c) => (
+            {["#00202e", "#003f5c", "#2c4875", "#8a508f", "#bc5090", "#ff6361", "#ff8531", "#ffa600", "#ffd380"].map((c) => (
               <div key={c} className="flex-1" style={{ background: c }} />
             ))}
           </div>
@@ -148,7 +148,7 @@ export default function LoginPage() {
               type="submit"
               className="w-full font-semibold h-11"
               disabled={isSubmitting}
-              style={{ background: "var(--pastel-blue)", color: "hsl(220 50% 20%)" }}
+              style={{ background: "#bc5090", color: "white" }}
             >
               {isSubmitting ? (
                 <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Signing in...</>

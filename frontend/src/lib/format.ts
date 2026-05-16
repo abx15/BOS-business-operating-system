@@ -32,25 +32,26 @@ export const PAYMENT_METHOD_LABELS: Record<string, string> = {
   CARD: "Card",
 };
 
-export const PASTEL_COLORS = {
-  red:    "#ffadad",
-  orange: "#ffd6a5",
-  yellow: "#fdffb6",
-  green:  "#caffbf",
-  cyan:   "#9bf6ff",
-  blue:   "#a0c4ff",
-  purple: "#bdb2ff",
-  pink:   "#ffc6ff",
+export const BOS_COLORS = {
+  navy:    "#00202e",
+  blue:    "#003f5c",
+  steel:   "#2c4875",
+  purple:  "#8a508f",
+  magenta: "#bc5090",
+  coral:   "#ff6361",
+  orange:  "#ff8531",
+  gold:    "#ffa600",
+  cream:   "#ffd380",
 };
 
 // Recharts colors — pastel rainbow order
 export const CHART_COLORS = [
-  "#a0c4ff", // blue
-  "#caffbf", // green
-  "#bdb2ff", // purple
-  "#ffadad", // red
-  "#ffd6a5", // orange
-  "#9bf6ff", // cyan
-  "#ffc6ff", // pink
-  "#fdffb6", // yellow
+  "#bc5090", // primary/magenta
+  "#ff6361", // coral
+  "#8a508f", // purple
+  "#ffa600", // gold
+  "#2c4875", // steel
+  "#ff8531", // orange
+  "#003f5c", // blue
+  "#ffd380", // cream
 ];
