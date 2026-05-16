@@ -12,28 +12,28 @@ const CARDS = [
     desc: "Every transaction is a choreographed movement of data. Precision, speed, and elegance in every invoice generated.",
     icon: <Receipt className="w-12 h-12" />,
     color: "#8a508f",
-    image: "/assets/images/feature-billing.png"
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2011"
   },
   {
     title: "Neural Inventory",
     desc: "Predictive stock analysis that thinks ahead. Real-time mapping of global logistics with zero latency.",
     icon: <Box className="w-12 h-12" />,
     color: "#bc5090",
-    image: "/assets/images/feature-inventory.png"
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070"
   },
   {
     title: "Quantum Analytics",
     desc: "Visualize the invisible. High-dimensional data simplified into actionable wisdom through neural processing.",
     icon: <BarChart3 className="w-12 h-12" />,
     color: "#ff6361",
-    image: "/assets/images/feature-analytics.png"
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070"
   },
   {
     title: "Global Mesh",
     desc: "Scale without friction. Your business infrastructure distributed across the planet in a unified neural network.",
     icon: <Globe className="w-12 h-12" />,
     color: "#ff8531",
-    image: "/assets/images/feature-network.png"
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc48?q=80&w=2070"
   }
 ];
 
