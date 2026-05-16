@@ -60,7 +60,7 @@ export function FeaturesStory() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-black overflow-hidden">
+    <section id="modules" ref={sectionRef} className="bg-black overflow-hidden">
       <div ref={horizontalRef} className="flex h-screen w-fit items-center px-[10vw] gap-32">
         {/* Section Header */}
         <div className="flex-shrink-0 w-[40vw]">

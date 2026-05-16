@@ -49,10 +49,15 @@ export default function CinematicLanding() {
           </Link>
           
           <div className="hidden lg:flex items-center gap-16">
-            {["System", "Modules", "Scalability", "Network"].map(item => (
-              <MagneticButton key={item}>
-                <Link href={`#${item.toLowerCase()}`} className="text-xs font-black uppercase tracking-[0.4em] text-white/40 hover:text-white transition-colors">
-                  {item}
+            {[
+              { label: "System", id: "system" },
+              { label: "Modules", id: "modules" },
+              { label: "Standard", id: "bento" },
+              { label: "Network", id: "network" }
+            ].map(item => (
+              <MagneticButton key={item.id}>
+                <Link href={`#${item.id}`} className="text-xs font-black uppercase tracking-[0.4em] text-white/40 hover:text-white transition-colors">
+                  {item.label}
                 </Link>
               </MagneticButton>
             ))}

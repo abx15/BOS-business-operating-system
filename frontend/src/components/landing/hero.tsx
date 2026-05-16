@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowRight, Zap } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -31,9 +32,20 @@ export function Hero() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-black">
+    <section id="system" ref={containerRef} className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-black">
+      {/* Immersive Background Image for LCP Optimization */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072"
+          alt="BOS System Neural Background"
+          fill
+          priority
+          className="object-cover opacity-10 blur-[2px] scale-110"
+        />
+      </div>
+      
       {/* Immersive Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-[#bc5090]/10 rounded-full blur-[160px] hero-glow pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-[#bc5090]/10 rounded-full blur-[160px] hero-glow pointer-events-none z-10" />
       
       <div className="container mx-auto px-6 relative z-10 text-center">
         <motion.div 

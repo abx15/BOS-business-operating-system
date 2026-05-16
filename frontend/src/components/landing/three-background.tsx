@@ -8,7 +8,7 @@ import * as THREE from "three";
 function Particles() {
   const ref = useRef<THREE.Points>(null);
   
-  const particlesCount = 2000;
+  const particlesCount = 1200;
   const positions = useMemo(() => {
     const pos = new Float32Array(particlesCount * 3);
     for (let i = 0; i < particlesCount; i++) {

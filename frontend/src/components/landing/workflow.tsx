@@ -48,7 +48,7 @@ export function Workflow() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-40 bg-black container mx-auto px-6 relative">
+    <section id="network" ref={containerRef} className="py-40 bg-black container mx-auto px-6 relative">
       {/* Vertical Progress Line */}
       <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/5 hidden md:block" />
 
